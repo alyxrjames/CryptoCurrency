@@ -5,6 +5,7 @@
  */
 package com.alyxdev.cryptostat.Entity;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,13 +14,16 @@ import javax.persistence.Id;
  * @author Alyx
  */
 @Entity
-public class TestEntity {
+public class TestEntity implements Serializable {
     
     @Id
     private int id;
     private String p1;
     private String p2;
     private String p3;
+
+    public TestEntity() {
+    }
     
     public TestEntity(int id, String p1, String p2, String p3){
         this.id = id;

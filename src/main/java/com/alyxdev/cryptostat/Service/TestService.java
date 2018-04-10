@@ -10,11 +10,13 @@ import com.alyxdev.cryptostat.Repository.TestRepository;
 import java.util.ArrayList;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Alyx
  */
+@Service
 public class TestService {
     
     @Autowired
