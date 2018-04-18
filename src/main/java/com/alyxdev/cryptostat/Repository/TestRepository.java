@@ -13,9 +13,9 @@ import org.springframework.stereotype.Repository;
  *
  * @author Alyx
  */
-@Repository
+@Repository("mysql")
 public interface TestRepository extends CrudRepository<TestEntity,Integer> {
     
-
+    
     
 }

@@ -30,7 +30,7 @@ public class TestController {
     @Autowired
     private TestService testService;
     
-    @RequestMapping("/test/AllUnits")
+    @RequestMapping("/testall")
     public ArrayList<TestEntity> getAllTestUnits(){
         return testService.getAllTestEntities();
     }
@@ -50,7 +50,12 @@ public class TestController {
         testService.removeTestEntity(id);
     }
     
-    
+    @RequestMapping("/test/welcome")
+    public String welcome(){
+        
+        return "welcome to springboot";
+        
+    }
     
     
 }

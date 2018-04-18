@@ -6,37 +6,50 @@
 package com.alyxdev.cryptostat.Entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Alyx
  */
 @Entity
+@Table(name = "test")
 public class TestEntity implements Serializable {
     
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @Column(name = "id")
+    private Integer id;
+    
+    @Column(name = "testcol1")
     private String p1;
+    
+    @Column(name = "testcol2")
     private String p2;
+    
+    @Column(name = "testcol3")
     private String p3;
 
     public TestEntity() {
     }
     
-    public TestEntity(int id, String p1, String p2, String p3){
+    public TestEntity(Integer id, String p1, String p2, String p3){
         this.id = id;
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
     }
     
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

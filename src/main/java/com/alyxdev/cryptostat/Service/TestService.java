@@ -22,8 +22,6 @@ public class TestService {
     @Autowired
     private TestRepository testRepository;
     
-    private ArrayList<TestEntity> testList;
-    
     public ArrayList<TestEntity> getAllTestEntities(){
        ArrayList<TestEntity> list = new ArrayList();
        testRepository.findAll().forEach(list::add);
