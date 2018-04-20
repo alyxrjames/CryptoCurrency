@@ -24,7 +24,8 @@ public class CryptoService {
     @Autowired
     private CryptoRepository cryptoRepository;
     
-    public ArrayList<CryptoCoinEntity> getAllCryptoEntities(){
+    public ArrayList<CryptoCoinEntity> getAllCryptoEntities() {
+        
        ArrayList<CryptoCoinEntity> list = new ArrayList();
        cryptoRepository.findAll().forEach(list::add);
        return list;

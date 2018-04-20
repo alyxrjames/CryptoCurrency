@@ -65,10 +65,24 @@ public class CryptoCoinEntity implements Serializable {
     @Column(name = "data_symbols_count")
     private Integer data_symbols_count;
     
-    public CryptoCoinEntity() {
-        
+
+    public CryptoCoinEntity(Integer id, String asset_id, String asset_name, Integer is_crypto, String data_start, String data_end, String data_quote_start, String data_quote_end, String data_orderbook_start, String data_orderbook_end, String data_trade_start, String data_trade_end, Integer data_trade_count, Integer data_symbols_count) {
+        this.id = id;
+        this.asset_id = asset_id;
+        this.asset_name = asset_name;
+        this.is_crypto = is_crypto;
+        this.data_start = data_start;
+        this.data_end = data_end;
+        this.data_quote_start = data_quote_start;
+        this.data_quote_end = data_quote_end;
+        this.data_orderbook_start = data_orderbook_start;
+        this.data_orderbook_end = data_orderbook_end;
+        this.data_trade_start = data_trade_start;
+        this.data_trade_end = data_trade_end;
+        this.data_trade_count = data_trade_count;
+        this.data_symbols_count = data_symbols_count;
     }
-    
+
     public Integer getId() {
         return id;
     }
