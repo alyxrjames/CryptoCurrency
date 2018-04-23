@@ -11,6 +11,7 @@ import com.alyxdev.cryptostat.Entity.CryptoCoinEntity;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -29,7 +30,7 @@ public class CryptoDataInjector {
     static final String PASS = "Sinful77";
     
     private Connection conn;
-    private Statement stmt ;
+    private PreparedStatement stmt;
     
     public CryptoDataInjector(){
         
@@ -50,7 +51,12 @@ public class CryptoDataInjector {
             
             this.conn = (Connection) DriverManager.getConnection(DB_URL, USER, PASS);
             
-            this.stmt = (Statement) conn.createStatement();
+            this.stmt =   conn.prepareStatement("insert into cryptofeed "
+                    + "(asset_id,asset_name,asset_is_crypto,data_start,data_end"
+                    + ",data_quote_start,data_quote_end,data_orderbook_start"
+                    + ",data_orderbook_end, data_trade_start, data_trade_end"
+                    + ",data_trade_count, data_symbols_count) "
+                    + "values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             
             Integer count = 1;
             
@@ -58,12 +64,23 @@ public class CryptoDataInjector {
                 
                 Integer is_crypto = a.is_type_crypto() ? 1 : 0;
                 
-                String sql = 
-                        "INSERT INTO cryptofeed " +
-                        "VALUES("+count+","+"'"+a.get_asset_id()+"'"+","+"'"+a.get_name()+"'"+","+"'"+is_crypto+"'"+
-                        ","+"'Temp1'"+","+"'Temp2'"+","+"'Temp3'"+","+"'Temp4'"+","+"'Temp5'"+","+"'Temp6'"+","+"'Temp7'"+","+"'Temp8'"+","+ 1 + ","+ 1 +")";
                 
-                stmt.executeUpdate(sql);
+                stmt.setString(1,a.get_asset_id());
+                stmt.setString(2,a.get_name());
+                stmt.setInt(3, is_crypto);
+                stmt.setString(4, "Temp1");
+                stmt.setString(5, "Temp2");
+                stmt.setString(6, "Temp3");
+                stmt.setString(7, "Temp4");
+                stmt.setString(8, "Temp5");
+                stmt.setString(9, "Temp6");
+                stmt.setString(10, "Temp7");
+                stmt.setString(11, "Temp8");
+                stmt.setInt(12, 1);
+                stmt.setInt(13, 1);
+                
+                stmt.executeUpdate();
+                
                 
                 count++;
             
